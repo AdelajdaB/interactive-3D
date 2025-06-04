@@ -2,6 +2,7 @@
   import { onMounted, ref } from 'vue'
   import * as THREE from 'three'
   import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+  import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
   
   const canvasEl = ref()
   let camera, scene, renderer
@@ -19,18 +20,26 @@
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.setPixelRatio(window.devicePixelRatio)
-  
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
-    scene.add(ambientLight)
+    renderer.toneMapping = THREE.ACESFilmicToneMapping
+    renderer.toneMappingExposure = 1.0
+    renderer.outputEncoding = THREE.sRGBEncoding
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5)
-    directionalLight.position.set(5, 5, 5)
-    directionalLight.castShadow = true
+    new RGBELoader().load(
+        'models/scene.hdr', 
+        function(texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping
+            scene.environment = texture
+
+            loadModel()
+        }
+    )
+
+    function loadModel(){
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8)
+    directionalLight.position.set(139.78, 31.8, 1.93)
+    directionalLight.followCamera = true
     scene.add(directionalLight)
-
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.5)
-    fillLight.position.set(-5, 0, -5)
-    scene.add(fillLight)
 
     renderer.setSize(window.innerWidth * 0.8, window.innerHeight)
     camera.position.z = 5
@@ -72,7 +81,8 @@
         }
     )
   
-    animate()
+    animate()   
+    }
   
     function animate() {
       requestAnimationFrame(animate)

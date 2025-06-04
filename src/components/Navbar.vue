@@ -2,10 +2,10 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const points = [
-  { label: 'Fore Mast', id: 'fore-mast' },
-  { label: 'Keel', id: 'keel' },
-  { label: 'Bridge', id: 'bridge' },
-  { label: 'Rudder', id: 'rudder' }
+  { label: 'Fore Mast', id: 'fore-mast', threshold: 25, position: '25%' },
+  { label: 'Keel', id: 'keel', threshold: 50, position: '50%' },
+  { label: 'Bridge', id: 'bridge', threshold: 75, position: '75%' },
+  { label: 'Rudder', id: 'rudder', threshold: 100, position: '100%' }
 ];
 
 const activePoint = ref(0);
@@ -64,9 +64,10 @@ onUnmounted(() => {
         v-for="(point, i) in points" 
         :key="i" 
         @click="scrollToSection(i)"
-        class="w-[16px] h-[16px] bg-white relative left-[-6px] justify-self-center self-center border-2 border-[#601a11] rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-[#601a11] hover:scale-150"
+        class="absolute w-[16px] h-[16px] bg-white left-[-6px] border-2 border-[#601a11] rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-[#601a11] hover:scale-150"
+        :style="{ top: point.position }"
         :class="{
-            '!bg-[#601a11] scale-120': (progress / 100) >= (i / (points.length - 1))
+          '!bg-[#601a11] scale-120': progress >= point.threshold
         }"
       >
         <span class="absolute left-6 top-[-8px] whitespace-nowrap text-[#601a11]">
