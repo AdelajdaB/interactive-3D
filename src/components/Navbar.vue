@@ -49,14 +49,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="fixed right-48 top-1/2 transform -translate-y-1/2 h-[80%] flex items-center z-50">
-    <div class="relative h-full w-[4px] grid grid-rows-4 gap-0">
+  <nav class="fixed right-28 lg:right-48 top-1/2 transform -translate-y-1/2 h-[80%] flex items-center z-50">
+    <div class="relative h-full w-1 grid grid-rows-4 gap-0">
       <!-- Background line -->
-      <div class="absolute h-full w-[4px] bg-[#601a11] opacity-30"></div>
+      <div class="absolute h-full w-1 bg-[#601a11] opacity-30"></div>
       
       <!-- Progress bar -->
       <div 
-        class="absolute w-[4px] bg-[#601a11] origin-top transition-all duration-300 ease-out"
+        class="absolute w-1 bg-[#601a11] origin-top transition-all duration-300 ease-out"
         :style="{ height: `${progress}%` }"
       ></div>
       
@@ -66,7 +66,7 @@ onUnmounted(() => {
         :key="i" 
         :id="point.label.toLowerCase().replace(/\s+/g, '-')"
         @click="scrollToSection(i)"
-        class="absolute w-[16px] h-[16px] bg-white left-[-6px] border-2 border-[#601a11] rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-[#601a11] hover:scale-150"
+        class="absolute w-4 h-4 bg-white -left-1.5 border-2 border-[#601a11] rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-[#601a11] hover:scale-150"
         :style="{ top: point.position }"
         :class="{
           '!bg-[#601a11] scale-120': progress >= point.threshold
