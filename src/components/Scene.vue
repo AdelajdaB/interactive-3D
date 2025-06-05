@@ -10,7 +10,7 @@
 
   // Define camera positions for each point
   const cameraPositions = [
-    { position: new THREE.Vector3(0, 0, 100), lookAt: new THREE.Vector3(0, 0, 0) }, // Initial view
+  { position: new THREE.Vector3(0, 0, window.innerWidth <= 768 ? 200 : 100), lookAt: new THREE.Vector3(0, 0, 0) }, // Initial view
     { position: new THREE.Vector3(-23, 5, 10), lookAt: new THREE.Vector3(-23, 0, 0) }, // Transition with zoom out
     { position: new THREE.Vector3(-46, 0, 10), lookAt: new THREE.Vector3(-46, 0, 4) }, // Fore Mast
     { position: new THREE.Vector3(-23, 5, 40), lookAt: new THREE.Vector3(-23, 0, 0) }, // Transition with zoom out
@@ -191,7 +191,7 @@ const cameraDebug = ref({
 </script>
 
 <template>
-    <canvas ref="canvasEl" class="w-full !h-[95vh] mr-4 ml-4" />
+    <canvas ref="canvasEl" class="!w-screen !h-[95vh] mr-4 ml-4" />
 
         <!-- Debug Overlay -->
     <!-- <div v-if="debugMode" class="fixed top-0 left-0 bg-black bg-opacity-75 text-white p-4 font-mono text-sm">
