@@ -2,10 +2,11 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const points = [
-  { label: 'Fore Mast', id: 'fore-mast', threshold: 25, position: '25%' },
-  { label: 'Keel', id: 'keel', threshold: 50, position: '50%' },
-  { label: 'Bridge', id: 'bridge', threshold: 75, position: '75%' },
-  { label: 'Rudder', id: 'rudder', threshold: 100, position: '100%' }
+  { label: 'Fore Mast', id: 'fore-mast', threshold: 20, position: '20%' },
+  { label: 'Keel', id: 'keel', threshold: 40, position: '40%' },
+  { label: 'Bridge', id: 'bridge', threshold: 60, position: '60%' },
+  { label: 'Rudder', id: 'rudder', threshold: 80, position: '80%' },
+  { label: 'end-point', id: 'end', threshold: 100, position: '100%' }
 ];
 
 const activePoint = ref(0);
@@ -25,7 +26,7 @@ const handleScroll = () => {
   const currentSection = Math.floor(scrollPosition / sectionHeight);
   activePoint.value = Math.min(currentSection, points.length - 1);
   
-  console.log('Scroll:', { scrollPosition, progress: progress.value, activePoint: activePoint.value });
+//   console.log('Scroll:', { scrollPosition, progress: progress.value, activePoint: activePoint.value });
 };
 
 const scrollToSection = (index) => {
@@ -63,6 +64,7 @@ onUnmounted(() => {
       <div 
         v-for="(point, i) in points" 
         :key="i" 
+        :id="point.label.toLowerCase().replace(/\s+/g, '-')"
         @click="scrollToSection(i)"
         class="absolute w-[16px] h-[16px] bg-white left-[-6px] border-2 border-[#601a11] rounded-full cursor-pointer z-10 transition-all duration-300 hover:bg-[#601a11] hover:scale-150"
         :style="{ top: point.position }"
@@ -81,5 +83,9 @@ onUnmounted(() => {
 <style scoped>
 .scale-120 {
   transform: scale(1.2);
+}
+
+#end-point {
+    display: none;
 }
 </style>

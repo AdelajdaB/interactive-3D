@@ -10,7 +10,7 @@ import { ref} from 'vue';
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 w-full h-screen pointer-events-none z-1">
+  <div class="fixed top-0 left-0 w-full h-screen flex justify-center pointer-events-none z-1">
     <Scene ref="scene" />
     <Navbar @scroll-to-section="focusOnPoint" />
   </div>
