@@ -57,7 +57,7 @@ const $screen = {
 </script>
 
 <template>
-  <nav class="fixed md:right-28 lg:right-48 z-50 top-8 left-1/2 -translate-x-1/2 w-[80%] h-1 md:left-auto md:top-1/2 md:-translate-x-0 md:-translate-y-1/2 md:h-[80%] md:w-auto flex items-center">
+  <nav class="fixed md:right-28 lg:right-48 rounded z-50 top-8 left-1/2 -translate-x-1/2 w-[80%] h-1 md:left-auto md:top-1/2 md:-translate-x-0 md:-translate-y-1/2 md:h-[80%] md:w-auto flex items-center">
     <div class="relative w-full h-1 grid grid-cols-4 gap-0 md:h-full md:w-1 md:grid-cols-none md:grid-rows-4">
       <!-- Background line -->
       <div class="absolute bg-[#601a11] opacity-30 w-full h-1 md:h-full md:w-1"></div>

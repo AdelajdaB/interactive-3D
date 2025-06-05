@@ -191,7 +191,7 @@ const cameraDebug = ref({
 </script>
 
 <template>
-    <canvas ref="canvasEl" class="!w-screen !h-[95vh] mr-4 ml-4" />
+    <canvas ref="canvasEl" class="w-full !h-[95vh] mr-4 ml-4" />
 
         <!-- Debug Overlay -->
     <!-- <div v-if="debugMode" class="fixed top-0 left-0 bg-black bg-opacity-75 text-white p-4 font-mono text-sm">
