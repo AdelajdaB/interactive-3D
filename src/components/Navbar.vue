@@ -1,14 +1,8 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
+import data from '@/data/data.json';
 
-const points = [
-  { label: 'Fore Mast', id: 'fore-mast', threshold: 20, position: '20%' },
-  { label: 'Keel', id: 'keel', threshold: 40, position: '40%' },
-  { label: 'Bridge', id: 'bridge', threshold: 60, position: '60%' },
-  { label: 'Rudder', id: 'rudder', threshold: 80, position: '80%' },
-  { label: 'end-point', id: 'end', threshold: 100, position: '100%' }
-];
-
+const points = data.points;
 const activePoint = ref(0);
 const progress = ref(0);
 
@@ -88,6 +82,23 @@ const $screen = {
           {{ point.label }}
         </span>
       </div>
+
+              <!-- Info Card -->
+              <div
+         v-for="(point, i) in points"
+         :key="i"
+         >
+         <div
+          v-if="point.description && progress >= point.threshold && progress < (points[i + 1]?.threshold || 101)"
+          class="absolute bg-white rounded-lg p-4 shadow-lg border border-[#601a11] w-64 transition-opacity duration-300"
+          :class="$screen.md ? 
+            '-left-[17rem] top-1/2 -translate-y-1/2' : 
+            'fixed left-1/2 top-16 -translate-x-1/2 z-50'"
+        >
+          <h3 class="font-bold text-[#601a11] mb-2">{{ point.label }}</h3>
+          <p class="text-sm text-gray-700">{{ point.description }}</p>
+        </div>
+         </div>
     </div>
   </nav>
 </template>

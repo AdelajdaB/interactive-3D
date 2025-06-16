@@ -1,0 +1,38 @@
+{
+    "points": [
+      { 
+        "label": "Fore Mast",
+        "id": "fore-mast",
+        "threshold": 20,
+        "position": "20%",
+        "description": "The fore mast is the frontmost mast on a ship, used for carrying sails and rigging."
+      },
+      {
+        "label": "Keel",
+        "id": "keel",
+        "threshold": 40,
+        "position": "40%",
+        "description": "The keel is the structural backbone of a ship, running along the bottom and providing stability."
+      },
+      {
+        "label": "Bridge",
+        "id": "bridge",
+        "threshold": 60,
+        "position": "60%",
+        "description": "The bridge is the command center of a ship, where navigation and operations are controlled."
+      },
+      {
+        "label": "Rudder",
+        "id": "rudder",
+        "threshold": 80,
+        "position": "80%",
+        "description": "The rudder is a flat piece of wood or metal at the stern of a ship, used for steering."
+      },
+      {
+        "label": "end-point",
+        "id": "end",
+        "threshold": 100,
+        "position": "100%"
+      }
+    ]
+  }
